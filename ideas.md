@@ -47,6 +47,19 @@ Severe violations will still require human intervention though.
 
 * Locations should allow exact sharing (at least in chat)
 
+### Healthy Behaviours
+
+* Allow specifying sleeping time
+* Warn after N hours in app
+* Recommend breaks every X time units
+* Inform about healthy discussion culture
+* Inform about what toxicity is and how other people might react to it
+
+### Surveys
+
+* More than 4 options
+* Don't hide see answers button away
+
 ### Posts
 
 * Picture, Audio or Video
@@ -175,6 +188,8 @@ are platform internal people that act according to pre-defined rules.
 
 If users wish to become moderators, they can apply through the app. As the service is
 currently not intending to make any money, this will not give any payment though.
+
+* Moderators for specific channels
 
 ### Transparency
 
