@@ -3,7 +3,7 @@
 The main goal of the architechture should be to allow hosting geographically close to the areas in which the service is used, but still allowing things such as users and chats to be shared between instances.
 Therefore, a microservice architechture will be handy. Services will be split into rough categories, such as users, chat and content.
 While users will be critical to overall fumctionallity, chat will work without content and vice-versa.
-Additionally, this allows us to share karma and other user statistics between instance, while still allowing partial outages.
+Additionally, this allows us to share Social Credit and other user statistics between instance, while still allowing partial outages.
 While there shouldn't be instances per city, it is thinkable to have one instance per county (there are 16 in germany).
 These instances should optimally be spread across different datacenters and be geographically close to their area of use.
 
@@ -36,6 +36,7 @@ A problem with proximity statistics might be a high computation cost.
 ### Account
 
 * Block certain telephone numbers (payphones and such)
+* Read-Only without account
 
 ### Moderation
 
@@ -48,16 +49,27 @@ Severe violations will still require human intervention though.
 
 ### Posts
 
+* Picture, Audio or Video
+  * 1x per day
+    * Reduces storage and moderation requirements
+  * Size-Limit
+    * Automatically reduce size
+* Posts are alled "shout(s)" and replies "echo(s)"
 * Sorting
   * Good posts first
   * New posts first
   * Heated (commented) posts first
 * Posts will have a character limit of 3000~ (requires more insights), but have a low preview character limit
-* No pictures, audio and video for now, since its high effort
 * Text is copyable
 * Links
   * Blacklist
   * Whitelist for highlighting and preview
+* Tagging
+  * Outside of text
+  * Automated channel suggestions
+  * Automated "related" posts suggestions
+    * Automated comment with related posts? For example the top 5 with the same tag?
+  * Where are tags visible / accessible (Global / geolocation)?
 
 ### Channel
 
@@ -70,19 +82,20 @@ Severe violations will still require human intervention though.
   * Subscribe to rough topics for channel suggestions
   * Initially ask for channel interests
 * A channel should only exist, after the first post has been made.
+* Channel invites (via chat or an existing post)
 
 #### Pins
 
 * Should allow categorisation
 
-### Karma
+### Social Credit
 
-Just like Jodel, we will have a Karma system. Karma can be earned through
+Just like Jodel, we will have a Social Credit system. Social Credit can be earned through
 upvotes, lost through downvotes and spent by reporting.
 
-Karma will determine how the moderation system treats you.
+Social Credit will determine how the moderation system treats you.
 
-If your karma is very low or you have lost lots of karma recently, one of
+If your Social Credit is very low or you have lost lots of Social Credit recently, one of
 the following things might happen:
 
 * Banned from certain types of channels (for example question posts)
@@ -91,29 +104,47 @@ the following things might happen:
 * Temporary ban from posting
 
 In order to have any of these punishments take effect, we can either use the
-overall karma or recent changes in karma balance, if any exist. An upside of
-the latter would be, that users with a lot of karma also can't afford trolling
-from time to time, using their karma as "troll budget".
+overall Social Credit or recent changes in Social Credit balance, if any exist. An upside of
+the latter would be, that users with a lot of Social Credit also can't afford trolling
+from time to time, using their Social Credit as "troll budget".
 
-By default, each user starts with a rather low base karma, but an amount bigger
+By default, each user starts with a rather low base Social Credit, but an amount bigger
 than zero, in order to be able to use the reporting functionality.
 
-### Karma Coupon Store
+### Social Credit Coupon Store
 
-Cooperation with corperations, that allow users to reduce the cost of their product by spending karma on it.
-This will potentially induce good behaviour and assign a value to karma.
+Cooperation with corperations, that allow users to reduce the cost of their product by spending Social Credit on it.
+This will potentially induce good behaviour and assign a value to Social Credit.
+
+### Chat
+
+* Name chats "whispers"
+* Main goal should be to reduce data sent and ensure peak-performance, especially when users have metered connections
+* Cache chats locally
+* Pinnable
+* Taggable
+* Chat rename
+* Deletable
+  * Cached chats are deleted upon reconnect
+* E2E-encrypted
+* Group chats
+  * E2E-encryption desired
+  * Optional invite link
+* Allow sending audio, images and video
+  * Automatically expires after 2 days after reading or 30 after not reading
+  * Allow custom expiration time (lower than 2 days)
 
 ### Voting
 
-Voting is the main mechanism that changes a users karma. An upvote can be given
-for free and will increase the posters karma. Downvoting will decrease the posters
-karma, but also reduce the own karma, in order to prevent abuse.
+Voting is the main mechanism that changes a users Social Credit. An upvote can be given
+for free and will increase the posters Social Credit. Downvoting will decrease the posters
+Social Credit, but also reduce the own Social Credit, in order to prevent abuse.
 
 ### Reports
 
 A report is kind of like a downvote, but more extreme. Attached to a report
 can be a text message and a reason. Reasons might go from mild things such as
-`spam` or `disrespective behaviour` to `exposing personal information` or
+`spam` or `disSocial Creditive behaviour` to `exposing personal information` or
 `violence`.
 
 On Jodel, people tend to quickly report others if they are in disagreement.
@@ -149,7 +180,7 @@ currently not intending to make any money, this will not give any payment though
 
 Anything that happens on the platform should be visible to the users.
 Meaning you'll always be able to have insights regarding upvotes, downvotes and reports.
-This way you can see how your own behaviour affects your karma and therefore your freedom
+This way you can see how your own behaviour affects your Social Credit and therefore your freedom
 and capabilities on the platform.
 
 This also goes for decisions made by the automated punishment system. You'll be informed of
