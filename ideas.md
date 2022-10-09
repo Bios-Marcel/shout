@@ -15,6 +15,7 @@ While it us unclear how well using microstream with Graal should work, due to it
 
 In the end, this architechture, paired with proper backups and redundancy of core services, will probably allow us sufficient scalability and reliability for the type of service that this project is gonna be.
 Backups will be rather simple to do, considering we use a simple file based approach and the fact that Microstream can handle partially written data.
+
 ## Statistics
 
 In Jodel, you don't really know how many active users there are or in which
@@ -32,10 +33,47 @@ Therefore, having the following datapoints would be interesting:
 
 A problem with proximity statistics might be a high computation cost.
 
-## Moderation
+### Account
+
+* Block certain telephone numbers (payphones and such)
+
+### Moderation
 
 The aim of the moderation system is to mainly operate without human intervention.
 Severe violations will still require human intervention though.
+
+### Location
+
+* Locations should allow exact sharing (at least in chat)
+
+### Posts
+
+* Sorting
+  * Good posts first
+  * New posts first
+  * Heated (commented) posts first
+* Posts will have a character limit of 3000~ (requires more insights), but have a low preview character limit
+* No pictures, audio and video for now, since its high effort
+* Text is copyable
+* Links
+  * Blacklist
+  * Whitelist for highlighting and preview
+
+### Channel
+
+* Global and geo-dependent channels
+  > Some topics might generally be interesting and some things, such as meetups, might only be interesting locally.
+* Channel discoverability
+  * Add rough channel topics
+    > Example:
+    > The channels `tabletennis` and `gym` belong into rough channel topic `sports` .
+  * Subscribe to rough topics for channel suggestions
+  * Initially ask for channel interests
+* A channel should only exist, after the first post has been made.
+
+#### Pins
+
+* Should allow categorisation
 
 ### Karma
 
@@ -59,6 +97,11 @@ from time to time, using their karma as "troll budget".
 
 By default, each user starts with a rather low base karma, but an amount bigger
 than zero, in order to be able to use the reporting functionality.
+
+### Karma Coupon Store
+
+Cooperation with corperations, that allow users to reduce the cost of their product by spending karma on it.
+This will potentially induce good behaviour and assign a value to karma.
 
 ### Voting
 
@@ -104,11 +147,23 @@ currently not intending to make any money, this will not give any payment though
 
 ### Transparency
 
-Anything that happens on the platform should be visible to the users, even the "bad" ones.
+Anything that happens on the platform should be visible to the users.
 Meaning you'll always be able to have insights regarding upvotes, downvotes and reports.
 This way you can see how your own behaviour affects your karma and therefore your freedom
 and capabilities on the platform.
 
 This also goes for decisions made by the automated punishment system. You'll be informed of
 punishments and be able to see why a punishment has gone into effect.
+
+Every user should at any point in time have the option to download or delete ALL their data.
+This includes all posts, replies, chats and other data related directly to the users account.
+
+### Privacy
+
+* Only save mandatory data
+  * Reduce cooperation with authorities
+  * No IP adresses
+  * Telephone number used for registration isn't saved (Achieved through hashing)
+  * Locations will never be exact
+
 
